@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recebe Salário</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+    
+                <label name="salario">Informe seu pagamento: </label><br>
+                <input type="text" name="salario"><br>
+    
+                <label name="data">Informe a data: </label><br>
+                <input type="date" name="data"><br>
+    
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <th>Data</th>
+                <th>Valor</th>
+                <th>Opções</th>
+            </thead>
+        </table>
+
+        {% for sal in salario %}
+
+            <div class="lista-salario-total">
+
+                {{ sal.data|date:"d/m" }}
+                {{ sal.salario }} 
+
+            </div>
+        {% endfor %}
+        <p>Total</p>
+        <p>{{ valor }}</p>
+    </div>
+
+</body>
+</html>
