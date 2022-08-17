@@ -14,10 +14,6 @@ def salario(request):
 
         add_salario.save()
 
-    return render(request, 'salario/salario.html')
-
-
-def total_salario(request):
     sal = Salario.objects.all()
 
     val_sal = cont = 0
@@ -31,3 +27,21 @@ def total_salario(request):
     }
 
     return render(request, 'salario/salario.html', context)
+
+    # return render(request, 'salario/salario.html')
+
+
+# def total_salario(request):
+#     sal = Salario.objects.all()
+
+#     val_sal = cont = 0
+#     while cont <= len(sal) - 1:
+#         val_sal += sal[cont].salario
+#         cont += 1
+
+#     context = {
+#         'salario': sal,
+#         'valor': val_sal,
+#     }
+
+#     return render(request, 'salario/salario.html', context)

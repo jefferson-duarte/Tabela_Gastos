@@ -1,48 +1,63 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <title>Recebe Salário</title>
 </head>
 <body>
 
-    <div class="container">
-        <div class="form-container">
-            <form method="post">
-                {% csrf_token %}
-    
-                <label name="salario">Informe seu pagamento: </label><br>
-                <input type="text" name="salario"><br>
-    
-                <label name="data">Informe a data: </label><br>
-                <input type="date" name="data"><br>
-    
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-
-        <table>
-            <thead>
-                <th>Data</th>
-                <th>Valor</th>
-                <th>Opções</th>
-            </thead>
-        </table>
-
-        {% for sal in salario %}
-
+    <center>
+        <div class="container">
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+        
+                    <label class="label-form" name="salario">Informe seu pagamento: </label><br>
+                    <input type="text" name="salario"><br>
+        
+                    <label class="label-form" name="data">Informe a data: </label><br>
+                    <input type="date" name="data"><br>
+        
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            
             <div class="lista-salario-total">
 
-                {{ sal.data|date:"d/m" }}
-                {{ sal.salario }} 
+                <table>
+                    <thead>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Opções</th>
+                    </thead>
+                    <tbody>
+                        {% for sal in salario %}
+                        <tr>
+                            <td>{{ sal.data|date:"d/m" }}</td>
+                            <td>{{ sal.salario }}</td>
+                        </tr>
+                        {% endfor %}
 
+                    </tbody>
+                </table>
             </div>
-        {% endfor %}
-        <p>Total</p>
-        <p>{{ valor }}</p>
-    </div>
+
+            <table>
+                <thead>
+                    <th>Total</th>
+                    <th>€ {{ valor }}</th>
+                </thead>
+            </table>
+    
+        </div>
+    </center>
 
 </body>
 </html>
