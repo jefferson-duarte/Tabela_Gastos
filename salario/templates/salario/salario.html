@@ -19,26 +19,26 @@
                 <form method="post">
                     {% csrf_token %}
         
-                    <label class="label-form" name="salario">Informe seu pagamento: </label><br>
-                    <input type="text" name="salario"><br>
+                    <label class="label-form" name="salario">Pagamento: €</label>
+                    <input class="input-form-salario" type="text" name="salario"><br>
         
-                    <label class="label-form" name="data">Informe a data: </label><br>
-                    <input type="date" name="data"><br>
+                    <label class="label-form" name="data">Data: </label>
+                    <input class="input-form-data" type="date" name="data" ><br>
         
-                    <button type="submit">Enviar</button>
+                    <button class="btn-form" type="submit">Enviar</button>
+
                 </form>
             </div>
             
             <div class="lista-salario-total">
 
-                <div class="messages">
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                
+                {% if messages %}
+                    <div class="messages">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                    </div>
+                {% endif %}
                 <table>
                     <thead>
                         <th>Data</th>
