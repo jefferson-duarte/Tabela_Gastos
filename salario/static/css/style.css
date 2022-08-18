@@ -10,7 +10,7 @@ table, th, td {
     font-family: sans-serif;
 }
 
-td {
+td, th {
     padding: 5px 10px 5px 10px;
 }
 
@@ -23,4 +23,12 @@ button {
     font-size: 20px;
 }
 
-
+.messages {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 20px;
+    background-color: red;
+    padding: 20px;
+    width: fit-content;
+}
