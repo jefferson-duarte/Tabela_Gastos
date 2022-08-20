@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista Pagamento{% endblock title %}
+
+{% block content %}
+    <center>
+
+        <div class="container">
+            
+            <div class="lista-salario-total">
+
+                <div class="message">
+                    {% if messages %}
+                        <br>
+                        {% for message in messages %}
+                            <div class="alert {{message.tags}}">
+                                {{message}}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <table>
+                    <thead>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Opções</th>
+                    </thead>
+                    <tbody>
+                        {% for sal in salario %}
+                        <tr>
+                            <td>{{ sal.data|date:"d/m" }}</td>
+                            <td>€ {{ sal.salario }}</td>
+                            <td>
+                                <a href="#">Editar</a>
+                                <a href="{% url 'deletar' sal.pk %}">Deletar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                    <tfoot>
+                        <thead>
+                            <th colspan="2">Total</th>
+                            <th>€ {{ valor }}</th>
+                        </thead>
+                    </tfoot>
+                </table>
+
+            </div>
+
+        </div>
+
+    </center>
+{% endblock content %}

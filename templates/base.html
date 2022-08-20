@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static '/global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/salario/css/style.css' %}">
+
+    <title>{% block title %}{% endblock title %} | Salário</title>
+
+</head>
+<body>
+
+    {% include 'salario/partials/modal.html' %}
+
+    {% block content %}{% endblock content %}
+
+
+    <script src="{% static 'global/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'global/js/popper.min.js' %}"></script>
+    <script src="{% static 'global/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

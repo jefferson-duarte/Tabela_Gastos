@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Salario
 from django.contrib import messages
+from django.contrib.messages import constants
 
 
 def salario(request):
@@ -15,10 +16,16 @@ def salario(request):
             )
 
             add_salario.save()
+            messages.add_message(
+                request,
+                constants.SUCCESS,
+                'Valor enviado com sucesso!'
+            )
+
     except:  # noqa
         messages.add_message(
             request,
-            messages.ERROR,
+            constants.ERROR,
             'ERRO. Informe apenas valores válidos. Ex.(999.99)'
         )
 
@@ -34,7 +41,7 @@ def salario(request):
         'valor': val_sal,
     }
 
-    return render(request, 'salario/salario.html', context)
+    return render(request, 'salario/partials/lista_pagamento.html', context)
 
 
 def salario_editar(request, id):
