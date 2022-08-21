@@ -72,3 +72,7 @@ td a:hover {
     border: none;
     margin-top: 5px;
 } 
+
+.btn-modal {
+    margin-top: 10px;
+}

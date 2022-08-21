@@ -15,10 +15,11 @@
 </head>
 <body>
 
-    {% include 'salario/partials/modal.html' %}
+    <center>
+        {% include 'salario/partials/modal.html' %}
 
-    {% block content %}{% endblock content %}
-
+        {% block content %}{% endblock content %}
+    </center>
 
     <script src="{% static 'global/js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'global/js/popper.min.js' %}"></script>

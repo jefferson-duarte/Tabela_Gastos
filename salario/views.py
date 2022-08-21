@@ -44,12 +44,13 @@ def salario(request):
     return render(request, 'salario/partials/lista_pagamento.html', context)
 
 
-def salario_editar(request, id):
-    ...
-
-
 def salario_deletar(request, pk):
     salario = get_object_or_404(Salario, pk=pk)
     salario.delete()
+    messages.add_message(
+        request,
+        constants.SUCCESS,
+        'Valor excluído com sucesso!'
+    )
 
     return redirect('index')

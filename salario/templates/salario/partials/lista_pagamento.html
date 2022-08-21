@@ -3,22 +3,21 @@
 {% block title %}Lista Pagamento{% endblock title %}
 
 {% block content %}
-    <center>
 
-        <div class="container">
-            
-            <div class="lista-salario-total">
+    <div class="container">
+        <div class="message">
+            {% if messages %}
+                <br>
+                {% for message in messages %}
+                    <div class="alert {{message.tags}}">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
 
-                <div class="message">
-                    {% if messages %}
-                        <br>
-                        {% for message in messages %}
-                            <div class="alert {{message.tags}}">
-                                {{message}}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
+        {% if valor %}
+            <div class="lista-salario-total">        
 
                 <table>
                     <thead>
@@ -32,7 +31,6 @@
                             <td>{{ sal.data|date:"d/m" }}</td>
                             <td>€ {{ sal.salario }}</td>
                             <td>
-                                <a href="#">Editar</a>
                                 <a href="{% url 'deletar' sal.pk %}">Deletar</a>
                             </td>
                         </tr>
@@ -48,8 +46,9 @@
                 </table>
 
             </div>
+        {% else %}
+            <h2>Não à valores informados.</h2>
+        {% endif %}
+    </div>
 
-        </div>
-
-    </center>
 {% endblock content %}
